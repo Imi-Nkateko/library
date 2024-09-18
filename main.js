@@ -10,19 +10,41 @@ newBookBtn.addEventListener('click', () => {
 })
 
 
-function Book() {
- 
+function Book(author, title, pages, read) {
+    this.author = author;
+    this.title = title;
+    this.pages = pages;
+    this.read = read;
 }
 
 function addBookToLibrary() {
     const container = document.querySelector('.container');
-    myLibrary.forEach(book => {
+    const author = document.querySelector('#author').value;
+    const title = document.querySelector('#title').value;
+    const pages = document.querySelector('#pages').value;
+    const read = document.querySelector('#read').value;
+
+    const newBook = new Book(author, title, pages, read);
+    console.log(read)
+    myLibrary.push(newBook);
+  
         container.innerHTML += `
         <div class="card-container">
-            <h1>${book}</h1>
+            <h1>${newBook.author}</h1>
+            <p>${newBook.title}</p>
+            <p>${newBook.pages}</p>
         </div>
-        `
-    })
+        `   
 }
 
-addBookToLibrary()
+const submitBtn = document.querySelector('.submit-btn');
+
+submitBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    addBookToLibrary();
+})
+ 
+
+// function generateLibrary() {
+
+// }
