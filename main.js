@@ -9,25 +9,29 @@ newBookBtn.addEventListener('click', () => {
     formEl.style.display = 'block'
 })
 
-
-function Book(author, title, pages, read) {
-    this.author = author;
-    this.title = title;
-    this.pages = pages;
-    this.read = read;
+class Book {
+    constructor (author, title, pages, read) {
+        this.author = author;
+        this.title = title;
+        this.pages = pages;
+        this.read = read;
+    }
 }
 
+
+
+
 const container = document.querySelector('.container');
-    const author = document.querySelector('#author').value;
-    const title = document.querySelector('#title').value;
-    const pages = document.querySelector('#pages').value;
-    const read = document.querySelector('#read').value;
+    const author = document.querySelector('#author');
+    const title = document.querySelector('#title');
+    const pages = document.querySelector('#pages');
+    const read = document.querySelector('#read');
 
 function addBookToLibrary() {    
 
-    const newBook = new Book(author, title, pages, read);
-    if (newBook.author === "" || newBook.title === "" || newBook.pages === "") {
-        alert("please fill form")
+    const newBook = new Book(author.value, title.value, pages.value, read.value);
+    if (author.value === "" || title.value === "" || pages.value=== "") {
+        console.log(Error)
     } else {
         myLibrary.push(newBook);
 
@@ -39,7 +43,7 @@ function addBookToLibrary() {
         </div>
         `   
     }
-
+        
 }
 
 const submitBtn = document.querySelector('.submit-btn');
